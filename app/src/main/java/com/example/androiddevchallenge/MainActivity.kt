@@ -19,7 +19,6 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,7 +30,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
-import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,6 +38,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.gray900
 import com.example.androiddevchallenge.ui.theme.white
@@ -49,16 +52,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Welcome()
+                MainNavigation()
             }
         }
     }
 }
 
-
+@Composable
+fun MainNavigation() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = "welcome") {
+        composable("welcome") { Welcome(navController) }
+        composable("login") { LogIn() }
+    }
+}
 
 @Composable
-fun Welcome() {
+fun Welcome(navController: NavController) {
     Image(
         painter = painterResource(R.drawable.welcome),
         contentDescription = null,
@@ -79,7 +89,7 @@ fun Welcome() {
         Spacer(modifier = Modifier.height(24.dp))
         BigButton(onClick = { }, text = "SIGN UP")
         Spacer(modifier = Modifier.height(8.dp))
-        BigButton(onClick = { }, text = "LOG IN")
+        BigButton(onClick = { navController.navigate("login") }, text = "LOG IN")
     }
 }
 
@@ -101,7 +111,7 @@ fun BigButton(onClick: () -> Unit, text: String) {
 @Composable
 fun WelcomeLightPreview() {
     MyTheme {
-        Welcome()
+        Welcome(rememberNavController())
     }
 }
 
@@ -109,6 +119,6 @@ fun WelcomeLightPreview() {
 @Composable
 fun WelcomeDarkPreview() {
     MyTheme(darkTheme = true) {
-        Welcome()
+        Welcome(rememberNavController())
     }
 }
