@@ -28,4 +28,3 @@ val gray900 = Color(0xFF333333)
 val gray800 = Color(0xCC333333)
 val rust600 = Color(0xFF886363)
 val rust300 = Color(0xFFE1AFAF)
-
