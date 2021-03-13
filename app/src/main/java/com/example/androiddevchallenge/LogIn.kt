@@ -28,10 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
@@ -52,9 +49,7 @@ fun LogIn() {
         ) {
             Text(
                 text = "LOG IN",
-                fontFamily = FontFamily(Font(R.font.kulim_park_light)),
-                fontSize = 28.sp,
-                letterSpacing = 1.25.sp
+                style = MaterialTheme.typography.h1
             )
         }
     }
