@@ -30,7 +30,8 @@ private val DarkColorPalette = darkColors(
 private val LightColorPalette = lightColors(
     primary = purple500,
     primaryVariant = purple700,
-    secondary = teal200
+    secondary = teal200,
+    background = taupe100,
 
         /* Other default colors to override
     background = Color.White,
@@ -54,6 +55,6 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() (
         colors = colors,
         typography = typography,
         shapes = shapes,
-        content = content
+        content = content,
     )
 }
