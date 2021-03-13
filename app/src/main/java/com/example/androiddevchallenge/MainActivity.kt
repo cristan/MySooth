@@ -29,11 +29,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,8 +46,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.gray900
-import com.example.androiddevchallenge.ui.theme.white
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,19 +89,32 @@ fun Welcome(navController: NavController) {
         Spacer(modifier = Modifier.height(24.dp))
         BigButton(onClick = { }, text = "SIGN UP")
         Spacer(modifier = Modifier.height(8.dp))
-        BigButton(onClick = { navController.navigate("login") }, text = "LOG IN")
+        BigButton(
+            onClick = { navController.navigate("login") },
+            text = "LOG IN",
+            backgroundColor = MaterialTheme.colors.secondary,
+            contentColor = MaterialTheme.colors.onSecondary,
+        )
     }
 }
 
 @Composable
-fun BigButton(onClick: () -> Unit, text: String) {
+fun BigButton(
+    onClick: () -> Unit,
+    text: String,
+    backgroundColor: Color = MaterialTheme.colors.primary,
+    contentColor: Color = MaterialTheme.colors.onPrimary,
+) {
     Button(
         onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .height(72.dp)
             .clip(shape = RoundedCornerShape(size = 8.dp)),
-        colors = ButtonDefaults.buttonColors(backgroundColor = gray900, contentColor = white)
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = backgroundColor,
+            contentColor = contentColor
+        )
     ) {
         Text(text)
     }
