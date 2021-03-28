@@ -32,14 +32,11 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.white
 
 @Composable
 fun LogIn() {
@@ -69,7 +66,7 @@ fun LogIn() {
             Spacer(modifier = Modifier.height(32.dp))
             TextField(
                 value = "",
-                onValueChange = {  },
+                onValueChange = { },
                 colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.primaryVariant),
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text("Email address") },
@@ -77,14 +74,14 @@ fun LogIn() {
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = "",
-                onValueChange = {  },
+                onValueChange = { },
                 colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.primaryVariant),
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text("Password") },
             )
             Spacer(modifier = Modifier.height(8.dp))
             BigButton(
-                onClick = {  },
+                onClick = { },
                 text = "LOG IN"
             )
         }

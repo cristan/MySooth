@@ -31,7 +31,7 @@ val typography = Typography(
         fontSize = 16.sp
     ),
 
-    h1 = TextStyle (
+    h1 = TextStyle(
         fontFamily = FontFamily(Font(R.font.kulim_park_light)),
         fontSize = 28.sp,
         letterSpacing = 1.25.sp
